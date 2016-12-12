@@ -28,14 +28,14 @@ System.register(["./runde.model", "./knobler.model"], function(exports_1, contex
                     this.summe = new Map();
                     knobler_model_1.KNOBLER.forEach(knobler => {
                         this.tabelle.set(knobler, new Array());
-                        this.summe.set(knobler, new runde_model_1.Runde(0));
+                        this.summe.set(knobler, new runde_model_1.Runde(knobler, 0));
                     });
                 }
                 neueRunde() {
                     knobler_model_1.KNOBLER.forEach(knobler => {
                         var rd = this.summe.get(knobler);
                         var act = rd.zaehler + 1;
-                        this.tabelle.get(knobler).push(new runde_model_1.Runde(act));
+                        this.tabelle.get(knobler).push(new runde_model_1.Runde(knobler, act));
                         rd.zaehler = act;
                     });
                 }

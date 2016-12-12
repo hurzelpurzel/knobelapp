@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 export class Runde{
+    public knobler: string;
     public zaehler: number;
     public strafen:number;
     public outs: number;
@@ -11,8 +12,10 @@ export class Runde{
     public haelften: number;
     public runden: number;
     
-    constructor( private _zaehler: number){
+    constructor(private _knobler: string, private _zaehler: number){
+        this.knobler = _knobler;
         this.zaehler = _zaehler;
+        this.reset();
     }
     
     reset(){

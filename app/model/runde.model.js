@@ -11,9 +11,12 @@ System.register([], function(exports_1, context_1) {
              * and open the template in the editor.
              */
             Runde = class Runde {
-                constructor(_zaehler) {
+                constructor(_knobler, _zaehler) {
+                    this._knobler = _knobler;
                     this._zaehler = _zaehler;
+                    this.knobler = _knobler;
                     this.zaehler = _zaehler;
+                    this.reset();
                 }
                 reset() {
                     this.strafen = 0;

@@ -24,7 +24,7 @@ export class Spiel{
         
         KNOBLER.forEach(knobler => {
             this.tabelle.set(knobler,new Array<Runde>());
-            this.summe.set(knobler,new Runde(0));
+            this.summe.set(knobler,new Runde(knobler,0));
         });
     }
     
@@ -33,7 +33,7 @@ export class Spiel{
          KNOBLER.forEach(knobler => {
             var rd = this.summe.get(knobler); 
             var act = rd.zaehler+1;
-            this.tabelle.get(knobler).push(new Runde(act)); 
+            this.tabelle.get(knobler).push(new Runde(knobler,act)); 
             rd.zaehler =act;
          });
     }

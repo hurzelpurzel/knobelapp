@@ -5,11 +5,25 @@
  
  */
 import { Component } from "angular2/core";
+import { RundeComponent } from "./runde.component";
+import { RundeKopfComponent } from "./rundekopf.component";
+import { Runde } from "../../model/runde.model";
+
 @Component({
     selector: "spiel-component",
-    template: `Hier stehen bald Spiele`})
+    directives: [RundeComponent, RundeKopfComponent],
+    template: `
+        <rundekopf-component [rundenzaehler]="aktuelleRunde.zaehler"></rundekopf-component>
+        <runde-component [runde]="aktuelleRunde" ></runde-component>
+    `})
     
 export class SpielComponent{
+    
+    aktuelleRunde: Runde;
+    constructor(){
+        this.aktuelleRunde=new Runde("Potti",1);
+    }
+     
     
 }
 
