@@ -8,5 +8,11 @@ export class Termin{
     termin : Date;
     ort: string;
     anlass: string;
+    
+    constructor(){
+        this.termin = new Date();
+        this.ort="";
+        this.anlass="";
+    }
 }
 

@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./runde.component", "./rundekopf.component", "../../model/runde.model"], function(exports_1, context_1) {
+System.register(["angular2/core", "./runde.component", "./rundekopf.component", "../../model/spiel.model", "../../model/termin.model", "../../model/knobler.model"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "./runde.component", "./rundekopf.component", 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, runde_component_1, rundekopf_component_1, runde_model_1;
+    var core_1, runde_component_1, rundekopf_component_1, spiel_model_1, termin_model_1, knobler_model_1;
     var SpielComponent;
     return {
         setters:[
@@ -23,13 +23,28 @@ System.register(["angular2/core", "./runde.component", "./rundekopf.component", 
             function (rundekopf_component_1_1) {
                 rundekopf_component_1 = rundekopf_component_1_1;
             },
-            function (runde_model_1_1) {
-                runde_model_1 = runde_model_1_1;
+            function (spiel_model_1_1) {
+                spiel_model_1 = spiel_model_1_1;
+            },
+            function (termin_model_1_1) {
+                termin_model_1 = termin_model_1_1;
+            },
+            function (knobler_model_1_1) {
+                knobler_model_1 = knobler_model_1_1;
             }],
         execute: function() {
             SpielComponent = class SpielComponent {
                 constructor() {
-                    this.aktuelleRunde = new runde_model_1.Runde("Potti", 1);
+                    this.knobeler = knobler_model_1.KNOBLER;
+                    this.termin = new termin_model_1.Termin();
+                    this.spiel = new spiel_model_1.Spiel(this.termin);
+                    this.init();
+                }
+                init() {
+                    this.spiel.init();
+                }
+                neueRunde() {
+                    this.spiel.neueRunde();
                 }
             };
             SpielComponent = __decorate([
@@ -37,8 +52,11 @@ System.register(["angular2/core", "./runde.component", "./rundekopf.component", 
                     selector: "spiel-component",
                     directives: [runde_component_1.RundeComponent, rundekopf_component_1.RundeKopfComponent],
                     template: `
-        <rundekopf-component [rundenzaehler]="aktuelleRunde.zaehler"></rundekopf-component>
-        <runde-component [runde]="aktuelleRunde" ></runde-component>
+        <rundekopf-component [rundenzaehler]="spiel.zaehler"></rundekopf-component>
+        <div *ngFor="#cur of knobeler">
+            <runde-component [runde]="spiel.aktuelleRunde.get(cur)" ></runde-component>
+        </div>
+         
     ` }), 
                 __metadata('design:paramtypes', [])
             ], SpielComponent);

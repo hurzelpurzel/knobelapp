@@ -11,6 +11,11 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             Termin = class Termin {
+                constructor() {
+                    this.termin = new Date();
+                    this.ort = "";
+                    this.anlass = "";
+                }
             };
             exports_1("Termin", Termin);
         }

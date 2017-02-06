@@ -21,22 +21,29 @@ System.register(["./runde.model", "./knobler.model"], function(exports_1, contex
                 constructor(_termin) {
                     this._termin = _termin;
                     this.termin = _termin;
+                    this.zaehler = 0;
                     this.init();
                 }
                 init() {
                     this.tabelle = new Map();
                     this.summe = new Map();
+                    this.aktuelleRunde = new Map();
+                    this.zaehler = 1;
                     knobler_model_1.KNOBLER.forEach(knobler => {
                         this.tabelle.set(knobler, new Array());
+                        let next = new runde_model_1.Runde(knobler, this.zaehler);
+                        this.aktuelleRunde.set(knobler, next);
+                        this.tabelle.get(knobler).push(next);
                         this.summe.set(knobler, new runde_model_1.Runde(knobler, 0));
                     });
                 }
                 neueRunde() {
+                    this.aktuelleRunde = new Map();
+                    this.zaehler = this.zaehler + 1;
                     knobler_model_1.KNOBLER.forEach(knobler => {
-                        var rd = this.summe.get(knobler);
-                        var act = rd.zaehler + 1;
-                        this.tabelle.get(knobler).push(new runde_model_1.Runde(knobler, act));
-                        rd.zaehler = act;
+                        let next = new runde_model_1.Runde(knobler, this.zaehler);
+                        this.aktuelleRunde.set(knobler, next);
+                        this.tabelle.get(knobler).push(next);
                     });
                 }
                 calcSum() {
