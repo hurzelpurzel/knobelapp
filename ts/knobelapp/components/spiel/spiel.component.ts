@@ -4,19 +4,18 @@
  * and open the template in the editor.
  
  */
-import { Component } from "angular2/core";
-import { RundeComponent } from "./runde.component";
-import { RundeKopfComponent } from "./rundekopf.component";
+import { Component } from "@angular/core";
+
 
 import { Spiel } from "../../model/spiel.model";
 import { Termin } from "../../model/termin.model";
 import { KNOBLER } from "../../model/knobler.model";
 @Component({
     selector: "spiel-component",
-    directives: [RundeComponent, RundeKopfComponent],
+   
     template: `
         <rundekopf-component [rundenzaehler]="spiel.zaehler"></rundekopf-component>
-        <div *ngFor="#cur of knobeler">
+        <div *ngFor="let cur of knobeler">
             <runde-component [runde]="spiel.aktuelleRunde.get(cur)" ></runde-component>
         </div>
          

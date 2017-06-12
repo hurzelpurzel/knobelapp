@@ -1,10 +1,10 @@
-System.register([], function(exports_1, context_1) {
+System.register([], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var Runde;
     return {
-        setters:[],
-        execute: function() {
+        setters: [],
+        execute: function () {
             /*
              * To change this license header, choose License Headers in Project Properties.
              * To change this template file, choose Tools | Templates
@@ -35,6 +35,6 @@ System.register([], function(exports_1, context_1) {
             };
             exports_1("Runde", Runde);
         }
-    }
+    };
 });
 //# sourceMappingURL=runde.model.js.map

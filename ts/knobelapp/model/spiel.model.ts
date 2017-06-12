@@ -1,6 +1,7 @@
 import { Runde } from "./runde.model";
 import { Termin } from "./termin.model";
 import { KNOBLER } from "./knobler.model";
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

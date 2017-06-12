@@ -1,10 +1,9 @@
-import { Component } from "angular2/core";
-import { TermineComponent } from "./termine/termine.component";
-import { SpielComponent } from "./spiel/spiel.component";
-import { ROUTER_DIRECTIVES, RouteConfig } from 'angular2/router'
+import { Component } from "@angular/core";
+import { Router, ActivatedRoute} from "@angular/router";
+
 @Component({
     selector: "app-component",
-    directives: [ROUTER_DIRECTIVES],
+    
     template: `
    
     <header>
@@ -13,9 +12,9 @@ import { ROUTER_DIRECTIVES, RouteConfig } from 'angular2/router'
     <div class="navbar-header">
       <a class="navbar-brand" href="#">KnobelApp</a>
     </div>
-    <ul class="nav navbar-nav">
-     <li><a [routerLink]="['Termine']" >Termine</a></li>
-     <li><a [routerLink]="['Spiel']" >Spiel</a></li>
+    <ul class="nav navbar-nav" routerLinkActive="active">
+     <li><a routerLink="/termine" >Termine</a></li>
+     <li><a routerLink="/spiel" >Spiel</a></li>
     </ul>
   </div>
      
@@ -29,12 +28,11 @@ import { ROUTER_DIRECTIVES, RouteConfig } from 'angular2/router'
 
 })
 
-@RouteConfig([
-    { path: "/termine", name: "Termine", component: TermineComponent, useAsDefault: true },
-     { path: "/spiel", name: "Spiel", component: SpielComponent } 
-])
 
 export class AppComponent {
 
+    constructor(private _route: ActivatedRoute, private _router: Router){
+        
+    }
 }
 
